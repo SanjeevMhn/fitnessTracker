@@ -107,6 +107,42 @@
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                 </button>
+                <div class="search-box">
+                    <input type="text" name="search-text" id="" class="text-input" placeholder="Search">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </div>
+                </div>
+                <ul class="menu-list">
+                    <li class="menu-list__item">
+                        <a href="#" class="menu-list__link">
+                            <div class="icon-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#" class="menu-list__link">
+                            <div class="icon-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#" class="menu-list__link">
+                            <div class="img-container">
+                                <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="User Image" srcset="" class="user-img">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="content">
                 <router-view></router-view> 
@@ -140,14 +176,17 @@
         display: flex;
         align-items: center;
         gap: 2rem;
+        border-bottom: 2px solid #dedede;
+        border-radius: 5px;
+        padding-bottom: 1rem;
     }
     
     .dashboard-container .content-container .title .side-nav-toggler{
         border: none;
         outline: none;
         background-color: #fff;
-        height: 35px;
-        width: 35px;
+        height: 55px;
+        width: 55px;
         position: relative;
         display: flex;
         align-items: center;
@@ -289,6 +328,78 @@
     .dashboard-container .side-nav .brand .brand__name--half{
         display: block;
     }
+    .dashboard-container .content-container .search-box{
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 80%;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .dashboard-container .content-container .search-box input{
+        width: 100%;
+        font-size: 1.15rem;
+        padding: 0.35rem;
+        border-radius: 8px;
+    }
+
+    .dashboard-container .content-container .search-box .icon-container{
+        position: absolute;
+        right: 10px;
+    }
+    .dashboard-container .content-container .menu-list{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        gap: 1.5rem;
+    }
+    .dashboard-container .content-container .menu-list__link{
+       text-decoration: none; 
+       color: #000;
+    }
     
+    .dashboard-container .content-container .menu-list .icon-container,.img-container{
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .dashboard-container .content-container .menu-list .icon-container{
+        width: 2rem;
+        height: 2rem;
+    }
+    .dashboard-container .content-container .menu-list .img-container{
+        width: 3.25rem;
+        height: 3.25rem;
+    }
+    .dashboard-container .content-container .menu-list .icon-container svg,.img-container .user-img{
+        position: absolute;
+        object-fit: cover;
+    }
+
+    .dashboard-container .content-container .menu-list .icon-container svg{
+        height: 90%;
+        width: 90%;
+    }
+
+    .dashboard-container .content-container .menu-list .img-container .user-img{
+        height: 100%;
+        width: 100%;
+    }
+    
+    .dashboard-container .content-container .content{
+        padding-top: 1rem;
+    }
     
 </style>
