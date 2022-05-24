@@ -69,13 +69,13 @@
                 flex: 1 0 150px;
                 border: 1px solid #000;
                 border-radius: 8px;
+                padding: 2rem 1.5rem;
             }
             .list-link{
                 width: 100%;
                 text-decoration: none;
                 color: #000;
                 font-size: 1.25rem;
-                padding: 2rem 1.5rem;
                 display: flex;
             }
         }

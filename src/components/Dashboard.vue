@@ -1,6 +1,8 @@
 <script>
+    import ProfileNav from './ProfileNav.vue';
     export default{
         name: "Dashboard",
+        components: {ProfileNav},
         data(){
             return{
                 active: 'home',
@@ -140,7 +142,11 @@
                             <div class="img-container">
                                 <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="User Image" srcset="" class="user-img">
                             </div>
+                            <div class="drop-down">
+                                <ProfileNav/>
+                            </div>
                         </a>
+                        
                     </li>
                 </ul>
             </div>
@@ -362,9 +368,13 @@
     .dashboard-container .content-container .menu-list__link{
        text-decoration: none; 
        color: #000;
+       position: relative;
     }
-    
-    .dashboard-container .content-container .menu-list .icon-container,.img-container{
+    .dashboard-container .content-container .menu-list__link .drop-down{
+        position: absolute;
+    }
+    .dashboard-container .content-container .menu-list .icon-container,
+    .img-container{
         position: relative;
         border-radius: 50%;
         overflow: hidden;
@@ -383,7 +393,8 @@
         width: 3.25rem;
         height: 3.25rem;
     }
-    .dashboard-container .content-container .menu-list .icon-container svg,.img-container .user-img{
+    .dashboard-container .content-container .menu-list .icon-container svg,
+    .img-container .user-img{
         position: absolute;
         object-fit: cover;
     }
