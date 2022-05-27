@@ -1,17 +1,23 @@
 <script>
     export default{
         name: "Home",
+        props: ['workout'], 
         data(){
             return{
                 workoutView: true,
                 addWorkoutView: true,
+                workouts: {...this.workout},
+                workoutsArr:[
+                    this.workouts,
+                ]
             }
         },
-        
+       
         methods:{
             
         }
     }
+    
 </script>
 
 <template>
@@ -26,7 +32,13 @@
             </button>
         </div>
         <ul class="workouts__list">
-            <li class="list-item" >
+            <li>{{workouts.title}}</li>
+            <!-- <li class="list-item" v-for="(workout,index) in workouts" :key="index">
+                <div class="container">
+                    <div class="list-link">{{workout.title}}</div>
+                </div>
+            </li> -->
+            <!-- <li class="list-item" >
                 <div class="container">
                     <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
                 </div>
@@ -45,7 +57,7 @@
                 <div class="container">
                     <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
                 </div>
-            </li>
+            </li> -->
             
         </ul>   
     </div>

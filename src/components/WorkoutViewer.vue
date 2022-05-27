@@ -34,7 +34,7 @@
         border-radius: 8px;
         color: #000;
         .close-btn{
-            display: flex;
+            float: right;
             .icon-container{
                 outline: none;
                 border: none;

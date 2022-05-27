@@ -5,12 +5,12 @@
     export default{
         name: "Dashboard",
         components: {ProfileNav, WorkoutViewer, AddWorkout},
-        emits: ["showWorkout"],
         data(){
             return{
                 active: 'home',
                 workoutModal: false,
                 addWorkoutModal: false,
+                workoutDesc: [],
             } 
         },
         methods:{
@@ -49,6 +49,12 @@
             },
             hideAddWorkoutModal(addWorkoutView){
                 this.addWorkoutModal = addWorkoutView;
+            },
+            addWorkoutToList(workoutDesc){
+                this.workoutDesc = [{
+                    ...workoutDesc
+                }];
+                console.log(this.workoutDesc);
             }
         }
     }
@@ -176,13 +182,18 @@
                 </ul>
             </div>
             <div class="content">
-                <router-view @showWorkout="showWorkoutModal" @addWorkout="showAddWorkoutModal"></router-view> 
+                <router-view 
+                    @showWorkout="showWorkoutModal" 
+                    @addWorkout="showAddWorkoutModal"
+                    :workout="workoutDesc"
+                >
+                </router-view> 
             </div>
             <div class="workout-viewer-modal" :class="[workoutModal ? 'workout-viewer-modal--active': '']" ref="workoutModal">
                 <WorkoutViewer @hideWorkout="hideWorkoutModal"/>
             </div>
             <div class="addworkout-viewer-modal" :class="[addWorkoutModal ? 'addworkout-viewer-modal--active':'']" ref="addworkoutModal">
-                <AddWorkout @hideAddWorkout="hideAddWorkoutModal"/>
+                <AddWorkout @hideAddWorkout="hideAddWorkoutModal"  @formItems="addWorkoutToList"/>
             </div>
         </div>
     </div>

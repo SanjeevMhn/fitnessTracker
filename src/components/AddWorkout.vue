@@ -4,6 +4,32 @@
         data(){
             return{
                 addWorkoutView: false,
+                workoutDesc:{
+                    "title": '',
+                    "type": '',
+                    "duration": {
+                        "hrs":'',
+                        "mins":'',
+                        "secs":''
+                    },
+                    "desc": ''
+                }
+            }
+        },
+        methods:{
+            submitForm(){
+                this.$emit('formItems',this.workoutDesc);
+                this.$emit('hideAddWorkout',this.addWorkoutView);
+                this.workoutDesc = {
+                    "title": '',
+                    "type": '',
+                    "duration": {
+                        "hrs":'',
+                        "mins":'',
+                        "secs":''
+                    },
+                    "desc": ''
+                }
             }
         }
     }
@@ -19,18 +45,19 @@
             </button>
         </div>
         <h2 class="addworkout__title">Add Workout</h2>
-        <form action="javascript:void(0)" method="post" class="addworkout__form">
+        <form action="javascript:void(0)" method="post" class="addworkout__form" @submit="submitForm">
             <div class="form-data">
                 <label for="workout-title">
                     Workout Title
                 </label>
-                <input type="text" name="workout-title" id="" class="form-input" placeholder="Workout Title">
+                <input type="text" name="workout-title" id="" class="form-input" placeholder="Workout Title" v-model="workoutDesc.title">
             </div>
             <div class="form-data">
                 <label for="workout-type">
                     Workout Type
                 </label>
-                <select name="workout-type" id="" class="form-select">
+                <select name="workout-type" id="" class="form-select" v-model="workoutDesc.type">
+                    <option value="default">Choose workout type</option>
                     <option value="strength">Strength</option>
                     <option value="cardio">Cardiovascular</option>
                     <option value="hybrid">Hybrid</option>
@@ -42,21 +69,21 @@
                 <div class="workout-time">
                     <div class="workout-time__hrs">
                         <label for="hours">Hours</label>
-                        <input type="text" name="hours" id="" class="form-input" placeholder="0">
+                        <input type="text" name="hours" id="" class="form-input" placeholder="0" v-model="workoutDesc.duration.hrs">
                     </div>
                     <div class="workout-time__mins">
                         <label for="minutes">Minutes</label>
-                        <input type="text" name="minutes" id="" class="form-input" placeholder="0">
+                        <input type="text" name="minutes" id="" class="form-input" placeholder="0" v-model="workoutDesc.duration.mins">
                     </div>
                     <div class="workout-time__secs">
                         <label for="seconds">Seconds</label>
-                        <input type="text" name="seconds" id="" class="form-input" placeholder="0">
+                        <input type="text" name="seconds" id="" class="form-input" placeholder="0" v-model="workoutDesc.duration.secs">
                     </div>
                 </div>
             </div>
             <div class="form-data">
                 <label for="workout-desc">Workout Description</label>
-                <textarea name="workout-desc" id="" cols="30" rows="10" class="form-input" placeholder="Workout Description"></textarea>
+                <textarea name="workout-desc" id="" cols="30" rows="10" class="form-input" placeholder="Workout Description" v-model="workoutDesc.desc"></textarea>
             </div>
             <div class="form-data">
                 <button type="submit" class="submit-btn">Add</button>
@@ -122,7 +149,7 @@
                             flex-direction: column;
                             width: calc(100% / 4);
                             label{
-                                font-size: 1.15rem;
+                                font-size: 0.99rem;
                                 padding-bottom: 0.25rem;
                             }
                             input{
