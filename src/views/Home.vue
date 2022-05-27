@@ -22,17 +22,26 @@
         </div>
         <ul class="workouts__list">
             <li class="list-item">
-                <a href="#" class="list-link">Weight Training</a>
+                <div class="container">
+                    <a href="#" class="list-link">Weight Training</a>
+                </div>
             </li>
             <li class="list-item">
-                <a href="#" class="list-link">Cardio Training</a>
+                <div class="container">
+                    <a href="#" class="list-link">Weight Training</a>
+                </div>
             </li>
             <li class="list-item">
-                <a href="#" class="list-link">Yoga Class</a>
+                <div class="container">
+                    <a href="#" class="list-link">Weight Training</a>
+                </div>
             </li>
             <li class="list-item">
-                <a href="#" class="list-link">Hiking</a>
+                <div class="container">
+                    <a href="#" class="list-link">Weight Training</a>
+                </div>
             </li>
+            
         </ul>   
     </div>
     
@@ -62,20 +71,24 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 1.25rem;
+            flex-wrap: wrap;
             align-items: center;
             margin-top: 1rem;
             .list-item{
-                flex: 1 0 150px;
-                border: 1px solid #000;
                 border-radius: 8px;
-                padding: 2rem 1.5rem;
+                padding-right: 1rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                .container{
+                    border: 1px solid #000;
+                    padding: 1.5rem;
+                }
             }
             .list-link{
                 width: 100%;
                 text-decoration: none;
                 color: #000;
-                font-size: 1.25rem;
+                font-size: 1.5rem;
                 display: flex;
             }
         }

@@ -35,4 +35,25 @@
 </template>
 
 <style lang="scss">
+    .profile-nav{
+        color: #000;
+        .nav-list{
+            list-style-type: none;
+            &__item{
+                padding: 0.75rem 1rem;
+                border-bottom: 2px solid #cdcdcd;
+                &:not(:first-child){
+                    margin-top: 0.35rem;
+                }
+                &:hover{
+                    background-color: #cdcdcd;
+                    border-radius: 5px;
+                }
+            }
+            &__link{
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    }
 </style>

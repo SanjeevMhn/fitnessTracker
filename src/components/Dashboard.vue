@@ -24,13 +24,23 @@
                     nl.classList.remove('nav-list__item--active');
                     arr[num].classList.add('nav-list__item--active');
                 })
-            }
+            },
+            showDropDown(){
+                let dropDown = this.$refs.dropDown;
+                if(dropDown.classList.contains('drop-down--active')){
+                    dropDown.classList.remove('drop-down--active');
+                }else{
+                    dropDown.classList.add('drop-down--active');
+                }
+            },
+           
+
         }
     }
 </script>
 
 <template>
-    <div class="dashboard-container">
+    <div class="dashboard-container" ref="dashboard">
         <div class="side-nav side-nav--active" ref="sidenav">
             <div class="brand">
                 <h2 class="brand__name--full">FTracker</h2>
@@ -137,12 +147,12 @@
                             </div>
                         </a>
                     </li>
-                    <li class="menu-list__item">
+                    <li class="menu-list__item" @click="showDropDown">
                         <a href="#" class="menu-list__link">
                             <div class="img-container">
                                 <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="User Image" srcset="" class="user-img">
                             </div>
-                            <div class="drop-down">
+                            <div class="drop-down" ref="dropDown">
                                 <ProfileNav/>
                             </div>
                         </a>
@@ -372,6 +382,18 @@
     }
     .dashboard-container .content-container .menu-list__link .drop-down{
         position: absolute;
+        top: 4rem;
+        right: 0;
+        padding: 0.5rem;
+        background-color: #fff;
+        height: 70vh;
+        min-width: 15vw;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgb(52, 52, 52);
+        display: none;
+    }
+    .drop-down--active{
+        display: block!important;
     }
     .dashboard-container .content-container .menu-list .icon-container,
     .img-container{
@@ -393,6 +415,7 @@
         width: 3.25rem;
         height: 3.25rem;
     }
+    
     .dashboard-container .content-container .menu-list .icon-container svg,
     .img-container .user-img{
         position: absolute;
