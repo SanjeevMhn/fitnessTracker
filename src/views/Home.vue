@@ -3,9 +3,14 @@
         name: "Home",
         data(){
             return{
-
+                workoutView: true,
+                addWorkoutView: true,
             }
         },
+        
+        methods:{
+            
+        }
     }
 </script>
 
@@ -16,29 +21,29 @@
             <h3 class="title-text">
                 Workouts created by you.
             </h3>
-            <button class="create-workout">
+            <button class="create-workout" type="button" @click="$emit('addWorkout',addWorkoutView)">
                 Add Workout
             </button>
         </div>
         <ul class="workouts__list">
-            <li class="list-item">
+            <li class="list-item" >
                 <div class="container">
-                    <a href="#" class="list-link">Weight Training</a>
+                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
                 </div>
             </li>
             <li class="list-item">
                 <div class="container">
-                    <a href="#" class="list-link">Weight Training</a>
+                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
                 </div>
             </li>
             <li class="list-item">
                 <div class="container">
-                    <a href="#" class="list-link">Weight Training</a>
+                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
                 </div>
             </li>
             <li class="list-item">
                 <div class="container">
-                    <a href="#" class="list-link">Weight Training</a>
+                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
                 </div>
             </li>
             

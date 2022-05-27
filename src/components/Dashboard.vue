@@ -1,11 +1,16 @@
 <script>
     import ProfileNav from './ProfileNav.vue';
+    import WorkoutViewer from './WorkoutViewer.vue';
+    import AddWorkout from './AddWorkout.vue';
     export default{
         name: "Dashboard",
-        components: {ProfileNav},
+        components: {ProfileNav, WorkoutViewer, AddWorkout},
+        emits: ["showWorkout"],
         data(){
             return{
                 active: 'home',
+                workoutModal: false,
+                addWorkoutModal: false,
             } 
         },
         methods:{
@@ -33,14 +38,24 @@
                     dropDown.classList.add('drop-down--active');
                 }
             },
-           
-
+            showWorkoutModal(workoutView){
+                this.workoutModal = workoutView;
+            },
+            hideWorkoutModal(workoutView){
+                this.workoutModal = workoutView;
+            },
+            showAddWorkoutModal(addWorkoutView){
+                this.addWorkoutModal = addWorkoutView;
+            },
+            hideAddWorkoutModal(addWorkoutView){
+                this.addWorkoutModal = addWorkoutView;
+            }
         }
     }
 </script>
 
 <template>
-    <div class="dashboard-container" ref="dashboard">
+    <div class="dashboard-container" :class="[workoutModal || addWorkoutModal ?'bg-unfocus':'']" ref="dashboard">
         <div class="side-nav side-nav--active" ref="sidenav">
             <div class="brand">
                 <h2 class="brand__name--full">FTracker</h2>
@@ -161,16 +176,48 @@
                 </ul>
             </div>
             <div class="content">
-                <router-view></router-view> 
+                <router-view @showWorkout="showWorkoutModal" @addWorkout="showAddWorkoutModal"></router-view> 
+            </div>
+            <div class="workout-viewer-modal" :class="[workoutModal ? 'workout-viewer-modal--active': '']" ref="workoutModal">
+                <WorkoutViewer @hideWorkout="hideWorkoutModal"/>
+            </div>
+            <div class="addworkout-viewer-modal" :class="[addWorkoutModal ? 'addworkout-viewer-modal--active':'']" ref="addworkoutModal">
+                <AddWorkout @hideAddWorkout="hideAddWorkoutModal"/>
             </div>
         </div>
     </div>
 </template>
 
-<style>
+<style lang="scss">
+    .bg-unfocus{
+        position: relative;
+        &:after{
+            content: '';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.537);
+        }
+    }
     .dashboard-container{
         display: flex;
         height: 100vh;
+        position: relative;
+        transition: 400ms ease-in;
+    }
+    .dashboard-container .workout-viewer-modal,.addworkout-viewer-modal{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: none;
+        z-index: 999;
+    }
+    .workout-viewer-modal--active,
+    .addworkout-viewer-modal--active{
+        display: block!important;
     }
 
     .dashboard-container .content-container{
