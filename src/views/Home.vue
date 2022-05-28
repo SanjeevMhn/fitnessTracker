@@ -11,7 +11,9 @@
         },
        
         methods:{
-            
+						showModal(index){
+								this.$emit('showWorkout',this.workoutView,index);
+						}
         }
     }
     
@@ -31,7 +33,7 @@
         <ul class="workouts__list">
             <li class="list-item" v-for="(workout,index) in workouts" :key="index">
 								<div class="container">
-									<h2 class="workout-title">{{workout.title}}</h2>	
+									<h2 class="workout-title" @click="showModal(index)">{{workout.title}}</h2>	
 								</div>
 						</li>
         </ul>   
@@ -78,6 +80,7 @@
 										.workout-title{
 												font-size: 1.25rem;
 												font-weight: bold;
+												cursor: pointer;
 										}
                 }
             }

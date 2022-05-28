@@ -1,9 +1,10 @@
 <script>
     export default{
+				props:['workoutIndex','workouts'],
         name: "WorkoutViewer",
         data(){
             return{
-                workoutView: false
+                workoutView: false,
             }
         }
     }
@@ -18,11 +19,10 @@
                 </svg>
             </button>
         </div>
-        <h2 class="workout-viewer__title">Workout Viewer</h2>
+        <h2 class="workout-viewer__title">{{this.workouts[this.workoutIndex].title}}</h2>
         <p class="workout-viewer__desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sint repellat, fuga recusandae dolorum dolore corrupti harum id ad mollitia, animi sunt, fugit culpa rem! Magni, commodi veritatis minus ratione odit nesciunt, quasi, distinctio dolor ducimus quos doloribus voluptatem dolores!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga aperiam laborum debitis, quisquam quo blanditiis consequatur incidunt unde voluptate nemo, itaque deserunt, corrupti perspiciatis dolore? Ipsam vero id tempora a enim eos ad omnis consectetur molestiae quam quisquam aut placeat architecto, maiores dicta ut recusandae esse natus iusto. Veritatis id labore aut possimus nam? Fugiat ipsa ad animi itaque optio molestiae maiores ratione nobis dolore sit consequatur, vel eveniet, mollitia sunt ex vero. Obcaecati officia enim debitis ipsam inventore natus, iusto perspiciatis ea praesentium, veniam itaque fugiat animi. Ipsa aut ullam voluptatibus unde, culpa mollitia saepe quaerat consequatur inventore in!
-        </p>
+						{{this.workouts[this.workoutIndex].desc}}
+				</p>
     </div>
 </template>
 

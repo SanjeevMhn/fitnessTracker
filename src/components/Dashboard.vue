@@ -11,6 +11,7 @@
                 workoutModal: false,
                 addWorkoutModal: false,
                 workoutDesc: [],
+								workoutIndex: '',
             } 
         },
         methods:{
@@ -38,8 +39,10 @@
                     dropDown.classList.add('drop-down--active');
                 }
             },
-            showWorkoutModal(workoutView){
+            showWorkoutModal(workoutView,index){
                 this.workoutModal = workoutView;
+								this.workoutIndex = index;
+								console.log(this.workoutIndex);
             },
             hideWorkoutModal(workoutView){
                 this.workoutModal = workoutView;
@@ -51,9 +54,11 @@
                 this.addWorkoutModal = addWorkoutView;
             },
             addWorkoutToList(workoutDesc){
-                this.workoutDesc.push(workoutDesc) 
-                console.log(this.workoutDesc);
-            }
+                this.workoutDesc.push(workoutDesc);
+            },
+						getWorkoutIndex(index){
+							this.workoutIndex = index;	
+						}
         }
     }
 </script>
@@ -183,12 +188,13 @@
                 <router-view 
                     @showWorkout="showWorkoutModal" 
                     @addWorkout="showAddWorkoutModal"
+										@workoutDetails="getWorkoutIndex"
                     :workouts="workoutDesc"
                 >
                 </router-view> 
             </div>
             <div class="workout-viewer-modal" :class="[workoutModal ? 'workout-viewer-modal--active': '']" ref="workoutModal">
-                <WorkoutViewer @hideWorkout="hideWorkoutModal"/>
+                <WorkoutViewer @hideWorkout="hideWorkoutModal" :workoutIndex="workoutIndex" :workouts="workoutDesc" />
             </div>
             <div class="addworkout-viewer-modal" :class="[addWorkoutModal ? 'addworkout-viewer-modal--active':'']" ref="addworkoutModal">
                 <AddWorkout @hideAddWorkout="hideAddWorkoutModal"  @formItems="addWorkoutToList"/>
