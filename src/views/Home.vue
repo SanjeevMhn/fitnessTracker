@@ -1,15 +1,12 @@
 <script>
     export default{
         name: "Home",
-        props: ['workout'], 
+        props: ['workouts'], 
         data(){
             return{
                 workoutView: true,
                 addWorkoutView: true,
-                workouts: {...this.workout},
-                workoutsArr:[
-                    this.workouts,
-                ]
+                workouts: this.workouts,
             }
         },
        
@@ -32,33 +29,11 @@
             </button>
         </div>
         <ul class="workouts__list">
-            <li>{{workouts.title}}</li>
-            <!-- <li class="list-item" v-for="(workout,index) in workouts" :key="index">
-                <div class="container">
-                    <div class="list-link">{{workout.title}}</div>
-                </div>
-            </li> -->
-            <!-- <li class="list-item" >
-                <div class="container">
-                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="container">
-                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="container">
-                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="container">
-                    <a href="#" class="list-link" @click="$emit('showWorkout',workoutView)">Weight Training</a>
-                </div>
-            </li> -->
-            
+            <li class="list-item" v-for="(workout,index) in workouts" :key="index">
+								<div class="container">
+									<h2 class="workout-title">{{workout.title}}</h2>	
+								</div>
+						</li>
         </ul>   
     </div>
     
@@ -99,6 +74,11 @@
                 .container{
                     border: 1px solid #000;
                     padding: 1.5rem;
+										border-radius: 5px;
+										.workout-title{
+												font-size: 1.25rem;
+												font-weight: bold;
+										}
                 }
             }
             .list-link{

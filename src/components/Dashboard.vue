@@ -51,9 +51,7 @@
                 this.addWorkoutModal = addWorkoutView;
             },
             addWorkoutToList(workoutDesc){
-                this.workoutDesc = [{
-                    ...workoutDesc
-                }];
+                this.workoutDesc.push(workoutDesc) 
                 console.log(this.workoutDesc);
             }
         }
@@ -185,7 +183,7 @@
                 <router-view 
                     @showWorkout="showWorkoutModal" 
                     @addWorkout="showAddWorkoutModal"
-                    :workout="workoutDesc"
+                    :workouts="workoutDesc"
                 >
                 </router-view> 
             </div>
