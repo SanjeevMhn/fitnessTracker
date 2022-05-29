@@ -10,8 +10,40 @@
                 active: 'home',
                 workoutModal: false,
                 addWorkoutModal: false,
-                workoutDesc: [],
-								workoutIndex: '',
+                workoutDesc: [
+											{	
+												"title": "Leg Workout",
+												"type": "Strength",
+												"duration": {
+														"hrs": "4",
+														"mins": "3",
+														"secs": "0"
+												},
+												"desc": "Back Squats - 3 Sets "
+										},
+										{	
+												"title": "Upperbody Workout",
+												"type": "Strength",
+												"duration": {
+														"hrs": "0",
+														"mins": "45",
+														"secs": "0"
+												},
+												"desc": "3 sets - pullups"
+										},
+										{	
+												"title": "Conditioning",
+												"type": "Cardiovascular",
+												"duration": {
+														"hrs": "0",
+														"mins": "45",
+														"secs": "0"
+												},
+												"desc": "Running - 20km"
+										}
+
+								],
+								workoutIndex: '0',
             } 
         },
         methods:{
