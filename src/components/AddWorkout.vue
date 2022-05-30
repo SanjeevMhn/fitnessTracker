@@ -14,6 +14,27 @@
                         "secs":''
                     },
                     "desc": ''
+                },
+                editIndex: this.editIndex,
+                workouts: this.workouts,
+                editWorkout:{
+                    "title": '',
+                    "type": '',
+                    "durations": {
+                        "hrs": '',
+                        "mins": '',
+                        "secs": ''
+                    },
+                    "desc": ''
+                },
+            }
+        },
+        watch:{
+            editIndex(newIndex,oldIndex){
+                if(newIndex !== ''){
+                    console.log(newIndex,this.workouts[newIndex]); 
+                    this.editWorkout.title = this.workouts[newIndex].title;
+                    this.editWorkout.type = this.workouts[newIndex].type;
                 }
             }
         },
@@ -51,13 +72,13 @@
                 <label for="workout-title">
                     Workout Title
                 </label>
-                <input type="text" name="workout-title" id="" class="form-input" placeholder="Workout Title" ref="workoutTitle">
+                <input type="text" name="workout-title" id="" class="form-input" placeholder="Workout Title" v-model="editWorkout.title">
             </div>
             <div class="form-data">
                 <label for="workout-type">
                     Workout Type
                 </label>
-                <select name="workout-type" id="" class="form-select" v-model="workoutDesc.type">
+                <select name="workout-type" id="" class="form-select" v-model="editWorkout.type">
                     <option value="default">Choose workout type</option>
                     <option value="strength">Strength</option>
                     <option value="cardio">Cardiovascular</option>

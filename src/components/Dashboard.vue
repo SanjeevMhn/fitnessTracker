@@ -90,8 +90,7 @@ export default {
             let navListItems = Array.from(navList.children);
             navListItems.map((nl, index, arr) => {
                 nl.classList.remove('nav-list__item--active');
-                arr[num].classList.add('nav-list__item--active');
-            })
+                arr[num].classList.add('nav-list__item--active'); })
         },
         showDropDown() {
             let dropDown = this.$refs.dropDown;
